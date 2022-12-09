@@ -1,9 +1,90 @@
+* {
+    font-family: sans-serif;
+}
+
+header {
+    display: flex;
+    padding: 2%;
+    background-color:rgb(239, 146, 140);
+    border-bottom-left-radius: 3%;
+    border-bottom-right-radius: 3%;
+    color: rgb(255, 254, 254);
+  }
+
+  header h1 {
+    text-align: center;
+  }
+
+  #search-bar {
+    flex-wrap: wrap;
+    position: relative;
+    width: 350px;
+    height: 50px;
+    padding: 0 20px;
+    margin-left: 10%;
+    margin-top: 15px;
+    box-sizing: border-box;
+    font-size: 24px;
+    border: 1px solid rgb(255, 254, 254);
+    border-radius: 25px;
+    transition:all 0.5s ease-in-out;
+    background-color: rgb(247, 204, 201);
+  }
+
+  #search-bar:hover {
+    background-color:aliceblue;
+    border-color: aliceblue;
+    box-shadow: 0 36px 72px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+  
+  #search-bar input[type="text"] {
+    width: 100%;
+    height: 100%;
+    padding: 0 50px 0 10px;
+    font-size: 18px;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    background: transparent;
+    color: rgb(30, 0, 0);
+  }
+  
+  #search-bar input[type="submit"] {
+    cursor: pointer;
+  }
+  
+
+#foundPlaces {
+  border-radius: 1%;
+}
+
+table {
+  border-collapse:collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background-color:rgb(247, 204, 201);
+  border-color: aliceblue;
+  box-shadow: 0 36px 72px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
 /* 
  * Always set the map height explicitly to define the size of the div element
  * that contains the map. 
  */
  #map {
     height: 100%;
+    border-radius: 3%;
+    margin: 3%;
+    box-shadow: 0 12px 36px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
   }
   
   /* 
@@ -15,3 +96,5 @@
     margin: 0;
     padding: 0;
   }
+
+  
