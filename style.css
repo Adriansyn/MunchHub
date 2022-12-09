@@ -57,7 +57,8 @@ header {
 #foundPlaces {
   border-radius: 1%;
 }
-  table {
+
+table {
   border-collapse:collapse;
   width: 100%;
 }

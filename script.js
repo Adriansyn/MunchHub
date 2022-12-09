@@ -4,6 +4,21 @@
 // prompted by your browser. If you see the error "The Geolocation service
 // failed.", it means you probably did not give permission for the browser to
 // locate you.
+
+/*function changeMarkerIcon(marker, iconUrl) {
+  // Create a new icon object
+  let icon = {
+    url: "./pnpIcon.png",
+    scaledSize: new google.maps.Size(32, 32), // scaled size
+    origin: new google.maps.Point(100,100), // origin
+    anchor: new google.maps.Point(100, 100) // anchor
+  };
+
+  // Set the marker's icon to the new icon
+  marker.setIcon(icon);
+}*/
+
+
 let map, infoWindow;
 
 function initMap() {
@@ -60,8 +75,8 @@ function searchRestaurants() {
   var query = document.getElementById('searchInput').value;
 
   // Set the latitude, longitude, and radius for the search
-  var latitude = 37.786971;
-  var longitude = -122.399677;
+  var latitude = 34.0522;
+  var longitude = -118.2437;
   var radius = 500;
 
   // Create a new instance of the Google Maps API client
@@ -84,7 +99,7 @@ function searchRestaurants() {
       '<table>'
       '<thead>'
         '<tr>'
-          '</tr>'
+        '</tr>'
       '</thead>'
       '<tbody>';
       // Loop through the top 3 results and log each place's name
@@ -102,6 +117,7 @@ function searchRestaurants() {
       });
 
       // Add a marker for the first result to the map
+      //changeMarkerIcon();
       new google.maps.Marker({
         map: map,
         position: results[0].geometry.location
