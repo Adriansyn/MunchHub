@@ -15,8 +15,18 @@
     <link rel="stylesheet" type="text/css" href="./style.css" />
   </head>
   
+  <header>
+  <h1 class="title">Welcome to MunchMap!</h1>
+  <form onsubmit="searchRestaurants(); return false;">
+    <div id="search-bar">
+      <input type="text" id="searchInput" placeholder="I'm hungry for..." />
+      <input type="submit" value="FEED ME"/>
+    </div>
+  </form>
+</header>
+
   <body>
-    <header>MunchHub</header>
+    <div id="foundPlaces"></div>
     <div id="map"></div>
 
     <!-- 
