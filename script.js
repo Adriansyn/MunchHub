@@ -54,4 +54,63 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
+//make the search for local resturaunts
+function searchRestaurants() {
+  // Get the search query from the input field
+  var query = document.getElementById('searchInput').value;
+
+  // Set the latitude, longitude, and radius for the search
+  var latitude = 37.786971;
+  var longitude = -122.399677;
+  var radius = 500;
+
+  // Create a new instance of the Google Maps API client
+  var client = new google.maps.places.PlacesService(document.createElement('div'));
+
+  // Set the search parameters for the Places API request
+  var request = {
+    location: new google.maps.LatLng(latitude, longitude),
+    radius: radius,
+    query: query,
+    type: 'restaurant',
+    rankBy: google.maps.places.RankBy.DISTANCE
+  };
+
+  // Make the request to the Places API
+  client.textSearch(request, function(results, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+      // Create an HTML table to display the search results
+      var resultsTable = 
+      '<table>'
+      '<thead>'
+        '<tr>'
+          '</tr>'
+      '</thead>'
+      '<tbody>';
+      // Loop through the top 3 results and log each place's name
+      for (var i = 0; i < 3; i++) {
+        console.log(results[i].name);
+        resultsTable += '<tr><td>' + results[i].name + '</td><td>' + results[i].formatted_address + '</td></tr>';
+      }
+      // Close the table and add it to the page
+      resultsTable += '</tbody></table>';
+      document.getElementById('foundPlaces').innerHTML = resultsTable;
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: results[0].geometry.location,
+        zoom: 18
+      });
+
+      // Add a marker for the first result to the map
+      new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location
+      });
+      
+    } else {
+      console.error('Request to the Google Maps API failed with status: ' + status);
+    }
+  });
+}
+
 window.initMap = initMap;

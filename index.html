@@ -17,13 +17,16 @@
   
   <header>
     <h1 class="title">Welcome to MunchMap!</h1>
-    <div id="search-bar">
-        <input type="text" placeholder="Show me..." />
-        <input type="submit" value="" />
+    <form onsubmit="searchRestaurants(); return false;">
+      <div id="search-bar">
+      <input type="text" id="searchInput" placeholder="I'm hungry for..." />
+      <input type="submit" value="Search"/>
     </div>
+  </form>
 </header>
-  
+
   <body>
+    <div id="foundPlaces"></div>
     <div id="map"></div>
 
     <!-- 
