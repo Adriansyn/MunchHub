@@ -5,6 +5,30 @@
 // failed.", it means you probably did not give permission for the browser to
 // locate you.
 
+/*function changeMarkerIcon(marker, iconUrl) {
+  // Create a new icon object
+  let icon = {
+    url: "./pnpIcon.png",
+    scaledSize: new google.maps.Size(32, 32), // scaled size
+    origin: new google.maps.Point(100,100), // origin
+    anchor: new google.maps.Point(100, 100) // anchor
+  };
+
+  // Set the marker's icon to the new icon
+  marker.setIcon(icon);
+
+//Yelp Fusionls
+Client ID
+FKyQWTe-yrm1tRTRveurkA
+
+API Key
+70MBw7TuVsRr36nTsoQWnlMty01Szep2mc7KzI3kGi5S-Zm6iCJ-hukRvZs0prwGLrpdcENC1EwO3sZEnfJvwXAmeW7NSmMs9yFB7e5IMgiRqMQIP7Vz7alOF4WXY3Yx
+
+
+}*/
+
+
+
 function openFoodCategory(evt, categoryName) {
   // Declare all variables
   var i, tabcontent, tablinks;
