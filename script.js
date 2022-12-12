@@ -17,9 +17,14 @@
   // Set the marker's icon to the new icon
   marker.setIcon(icon);
 }*/
-
+var places = []
 
 let map, infoWindow;
+//save query and location to local storage
+function afterLoadedData (query,resultsTable) {
+  //  console.log(query.target.value);
+    localStorage.setItem(query, resultsTable );
+}
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
@@ -73,6 +78,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 function searchRestaurants() {
   // Get the search query from the input field
   var query = document.getElementById('searchInput').value;
+//save query to local storage
+//localStorage.setItem(query, resultsTable);
 
   // Set the latitude, longitude, and radius for the search
   var latitude = 34.0522;
@@ -102,15 +109,41 @@ function searchRestaurants() {
         '</tr>'
       '</thead>'
       '<tbody>';
+
+      var suggestionsTable = 
+      '<table>'
+      '<thead>'
+        '<tr>'
+        '</tr>'
+      '</thead>'
+      '<tbody>';
       // Loop through the top 3 results and log each place's name
       for (var i = 0; i < 3; i++) {
         console.log(results[i].name);
         resultsTable += '<tr><td>' + results[i].name + '</td><td>' + results[i].formatted_address + '</td></tr>';
+        suggestionsTable += '<tr><td>' + suggestions[i].name + '</td><td>' + suggestions[i].formatted_address + '</td></tr>';
+
+        var storedData = {
+          name: results[i+3].name, 
+          address: results[i+3].formatted_address,
+          
+        }
+        places.push(storedData);
       }
       // Close the table and add it to the page
       resultsTable += '</tbody></table>';
       document.getElementById('foundPlaces').innerHTML = resultsTable;
+      //adding search results to local storage
+     document.getElementById('foundPlaces').addEventListener('loadeddata',afterLoadedData);
 
+     resultsTable += '</tbody></table>';
+     document.getElementById('suggestedPlaces').innerHTML = resultsTable;
+     //adding search results to local storage
+    document.getElementById('suggestedPlaces').addEventListener('loadeddata',afterLoadedData);
+     
+
+  
+    afterLoadedData(query, JSON.stringify(places));
       var map = new google.maps.Map(document.getElementById('map'), {
         center: results[0].geometry.location,
         zoom: 18
