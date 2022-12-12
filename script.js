@@ -16,10 +16,63 @@
 
   // Set the marker's icon to the new icon
   marker.setIcon(icon);
+
+//Yelp Fusionls
+Client ID
+FKyQWTe-yrm1tRTRveurkA
+
+API Key
+70MBw7TuVsRr36nTsoQWnlMty01Szep2mc7KzI3kGi5S-Zm6iCJ-hukRvZs0prwGLrpdcENC1EwO3sZEnfJvwXAmeW7NSmMs9yFB7e5IMgiRqMQIP7Vz7alOF4WXY3Yx
+
+
+}*/
+
+
+
+function openFoodCategory(evt, categoryName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(categoryName).style.display = "block";
+  evt.currentTarget.className += " active";
+
+}
+
+
+
+var places = []
+main
+
+/*function changeMarkerIcon(marker, iconUrl) {
+  // Create a new icon object
+  let icon = {
+    url: "./pnpIcon.png",
+    scaledSize: new google.maps.Size(32, 32), // scaled size
+    origin: new google.maps.Point(100,100), // origin
+    anchor: new google.maps.Point(100, 100) // anchor
+  };
+
+  // Set the marker's icon to the new icon
+  marker.setIcon(icon);
 }*/
 
 
 let map, infoWindow;
+//save query and location to local storage
+function afterLoadedData (query,resultsTable) {
+  //  console.log(query.target.value);
+    localStorage.setItem(query, resultsTable );
+}
 
 function openFoodCategory(evt, categoryName) {
   // Declare all variables
@@ -94,6 +147,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 function searchRestaurants() {
   // Get the search query from the input field
   var query = document.getElementById('searchInput').value;
+//save query to local storage
+//localStorage.setItem(query, resultsTable);
 
   // Set the latitude, longitude, and radius for the search
   var latitude = 34.0522;
@@ -109,7 +164,8 @@ function searchRestaurants() {
     radius: radius,
     query: query,
     type: 'restaurant',
-    rankBy: google.maps.places.RankBy.DISTANCE
+    rankBy: google.maps.places.RankBy.DISTANCE,
+    //serves_beer: true
   };
 
   // Make the request to the Places API
@@ -123,15 +179,43 @@ function searchRestaurants() {
         '</tr>'
       '</thead>'
       '<tbody>';
+
+      var suggestionsTable = 
+      '<table>'
+      '<thead>'
+        '<tr>'
+        '</tr>'
+      '</thead>'
+      '<tbody>';
       // Loop through the top 3 results and log each place's name
       for (var i = 0; i < 3; i++) {
         console.log(results[i].name);
+        const searchResultButton = document.createElement("a");
+
         resultsTable += '<tr><td>' + results[i].name + '</td><td>' + results[i].formatted_address + '</td></tr>';
+        suggestionsTable += '<tr><td>' + suggestions[i].name + '</td><td>' + suggestions[i].formatted_address + '</td></tr>';
+
+        var storedData = {
+          name: results[i+3].name, 
+          address: results[i+3].formatted_address,
+          
+        }
+        places.push(storedData);
       }
       // Close the table and add it to the page
       resultsTable += '</tbody></table>';
       document.getElementById('foundPlaces').innerHTML = resultsTable;
+      //adding search results to local storage
+     document.getElementById('foundPlaces').addEventListener('loadeddata',afterLoadedData);
 
+     resultsTable += '</tbody></table>';
+     document.getElementById('suggestedPlaces').innerHTML = resultsTable;
+     //adding search results to local storage
+    document.getElementById('suggestedPlaces').addEventListener('loadeddata',afterLoadedData);
+     
+
+  
+    afterLoadedData(query, JSON.stringify(places));
       var map = new google.maps.Map(document.getElementById('map'), {
         center: results[0].geometry.location,
         zoom: 18
@@ -149,5 +233,43 @@ function searchRestaurants() {
     }
   });
 }
+// Toast static API auth token: c75a2aa085d30a90308841d388fc7828f1a28e29bdd2c82150a30cf356d4d87f
+
+fetch('/api/reviews', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    clientSecret:"",
+    clientId:"",
+    accessType:""
+  }),
+})
+  .then((res) => res.json())
+  .then((data) => {
+    console.log('Successful POST request:', data);
+    return data;
+  })
+  .catch((error) => {
+    console.error('Error in POST request:', error);
+  });
+
+  fetch('urlgoeshere', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'authentication':'Bearer ' + token
+    },
+   
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log('Successful POST request:', data);
+      return data;
+    })
+    .catch((error) => {
+      console.error('Error in POST request:', error);
+    });
 
 window.initMap = initMap;
