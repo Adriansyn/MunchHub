@@ -81,10 +81,6 @@ var suggestedPlaces = []
   marker.setIcon(icon);
 }*/
 
-
-var places = [];
-
-
 let map, infoWindow;
 
 //save query and location to local storage
@@ -121,19 +117,17 @@ function suggestionLoadedData() {
     // Create an element to display the object on the page
      suggestionsTable += '<tr><td>' + newSpot.name + '</td><td>' + newSpot.address + '</td></tr>';
     // Add the element to the page
-    
-  
   }
   suggestionsTable += '</tbody></table>';
   document.getElementById('suggestedPlaces').innerHTML = suggestionsTable;
-
-function afterLoadedData(query, suggestionsTable) {
-  console.log(query.target.value);
-  localStorage.setItem(query, suggestionsTable);
-//   console.log("first Function");
-//   suggestionLoadedData()
-
 }
+// function afterLoadedData(query, suggestionsTable) {
+//   console.log(query.target.value);
+//   localStorage.setItem(query, suggestionsTable);
+// //   console.log("first Function");
+// //   suggestionLoadedData()
+
+
 // //display suggested locations
 
 // function suggestionLoadedData() {
@@ -293,9 +287,9 @@ function searchRestaurants() {
       //suggestionsTable += '</tbody></table>';
       //document.getElementById('suggestedPlaces').innerHTML = suggestionsTable;
       //adding search results to local storage
-      document.getElementById('foundPlaces').addEventListener('loadeddata', afterLoadedData);
+      // document.getElementById('foundPlaces').addEventListener('loadeddata', afterLoadedData);
 
-      afterLoadedData(query, JSON.stringify(places));
+      // afterLoadedData(query, JSON.stringify(places));
 
       var map = new google.maps.Map(document.getElementById('map'), {
         center: results[0].geometry.location,
@@ -319,7 +313,7 @@ function searchRestaurants() {
 
 
 
-  window.initMap = initMap;
+window.initMap = initMap;
 
 
 
@@ -357,12 +351,11 @@ function getBusinessReviews(businessId) {
     .then(response => console.log(response))
     .catch(err => console.error(err));
 }
-}
+
 //getBusiness(nameofResult, latitude, longitude)
 
 
 
-window.initMap = initMap();
 
 
 
@@ -457,5 +450,6 @@ fetch('urlgoeshere', {
   .catch((error) => {
     console.error('Error in POST request:', error);
   });
-*/
 
+window.initMap = initMap;
+*/
