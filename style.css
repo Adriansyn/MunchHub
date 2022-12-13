@@ -4,15 +4,14 @@
 
 /* Style the tab */
 .tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  background-color: transparent;
+  float: right;
 }
 
 /* Style the buttons that are used to open the tab content */
 .tab button {
   background-color: inherit;
-  float: left;
+  float: right;
   border: none;
   outline: none;
   cursor: pointer;
@@ -55,7 +54,7 @@ header {
   }
 
   #search-bar {
-    position: relative;
+    position: center;
     width: 350px;
     height: 50px;
     padding: 0 20px;
@@ -117,38 +116,40 @@ tr:hover {
 }
 
 
-/* Style the tab */
+/* Style the tab
 .tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: rgb(247, 204, 201);;
+  color: aliceblue;
+  margin-left: 35%;
+  margin-top: -25px;
 }
-/* Style the buttons that are used to open the tab content */
+/* Style the buttons that are used to open the tab content 
 .tab button {
   background-color: inherit;
-  float: left;
+  float: right;
   border: none;
   outline: none;
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.3s;
 }
-/* Change background color of buttons on hover */
+/* Change background color of buttons on hover 
 .tab button:hover {
-  background-color: rgb(255, 245, 245);
+  background-color: rgb(236, 139, 139);
+  border-radius: 27%;
 }
-/* Create an active/current tablink class */
+/* Create an active/current tablink class 
 .tab button.active {
   background-color: rgb(189, 188, 241);
   color: aliceblue;
+  border-radius: 9%;
 }
-/* Style the tab content */
+/* Style the tab content 
 .tabcontent {
   display: none;
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
-}
+} */
 
 /* 
  * Always set the map height explicitly to define the size of the div element

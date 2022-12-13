@@ -193,7 +193,7 @@ function searchRestaurants() {
         const searchResultButton = document.createElement("a");
 
         resultsTable += '<tr><td>' + results[i].name + '</td><td>' + results[i].formatted_address + '</td></tr>';
-        suggestionsTable += '<tr><td>' + suggestions[i].name + '</td><td>' + suggestions[i].formatted_address + '</td></tr>';
+        // suggestionsTable += '<tr><td>' + suggestions[i].name + '</td><td>' + suggestions[i].formatted_address + '</td></tr>';
 
         var storedData = {
           name: results[i+3].name, 
@@ -234,42 +234,42 @@ function searchRestaurants() {
   });
 }
 // Toast static API auth token: c75a2aa085d30a90308841d388fc7828f1a28e29bdd2c82150a30cf356d4d87f
+// /*
+// fetch('/api/reviews', {
+//   method: 'POST',
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+//   body: JSON.stringify({
+//     clientSecret:"",
+//     clientId:"",
+//     accessType:""
+//   }),
+// })
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log('Successful POST request:', data);
+//     return data;
+//   })
+//   .catch((error) => {
+//     console.error('Error in POST request:', error);
+//   });
 
-fetch('/api/reviews', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    clientSecret:"",
-    clientId:"",
-    accessType:""
-  }),
-})
-  .then((res) => res.json())
-  .then((data) => {
-    console.log('Successful POST request:', data);
-    return data;
-  })
-  .catch((error) => {
-    console.error('Error in POST request:', error);
-  });
-
-  fetch('urlgoeshere', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'authentication':'Bearer ' + token
-    },
+//   fetch('urlgoeshere', {
+//     method: 'GET',
+//     headers: {
+//       'Content-Type': 'application/json',
+//       'authentication':'Bearer ' + token
+//     },
    
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log('Successful POST request:', data);
-      return data;
-    })
-    .catch((error) => {
-      console.error('Error in POST request:', error);
-    });
-
+//   })
+//     .then((res) => res.json())
+//     .then((data) => {
+//       console.log('Successful POST request:', data);
+//       return data;
+//     })
+//     .catch((error) => {
+//       console.error('Error in POST request:', error);
+//     });
+// /*
 window.initMap = initMap;

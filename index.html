@@ -20,45 +20,45 @@
     
   
   <header class="h-14 bg-gradient-to-r from-blue-500 to-white-500">
-  <h1 class="title">Welcome to MunchMap!</h1>
-  <form onsubmit="searchRestaurants(); return false;">
-    <div id="search-bar">
-      <input type="text" id="searchInput" placeholder="I'm hungry for..." />
-      <input type="submit" value="FEED ME!"/>
+    <h1 class="title">Welcome to MunchMap!</h1>
+    <form onsubmit="searchRestaurants(); return false;">
+      <div id="search-bar">
+        <input type="text" id="searchInput" placeholder="I'm hungry for..." />
+        <input type="submit" value="FEED ME!" />
+      </div>
+    </form>
+    <div class="tab">
+      <button class="tablinks" onclick="openFoodCategory(event, 'Brunch')">Brunch</button>
+      <button class="tablinks" onclick="openFoodCategory(event, 'Lunch')">Lunch</button>
+      <button class="tablinks" onclick="openFoodCategory(event, 'Dine')">Dine</button>
+      <button class="tablinks" onclick="openFoodCategory(event, 'Beverages')">Beverages</button>
+      <button class="tablinks" onclick="openFoodCategory(event, 'FastFood')">Fast Food</button>
     </div>
-
-<!-- Tab links -->
-<div class="tab">
-  <button class="tablinks" onclick="openFoodCategory(event, 'Brunch')">Brunch</button>
-  <button class="tablinks" onclick="openFoodCategory(event, 'Lunch')">Lunch</button>
-  <button class="tablinks" onclick="openFoodCategory(event, 'Dine')">Dine</button>
-  <button class="tablinks" onclick="openFoodCategory(event, 'Beverages')">Beverages</button>
-  <button class="tablinks" onclick="openFoodCategory(event, 'FastFood')">Fast Food</button>
-</div>
-<!-- Tab content -->
-<section class="navbar">
-  <div id="Brunch" class="tabcontent">
-    <h3>Brunch</h3>
-    <p>All the brunch restaurants.</p>
-  </div>
-  <div id="Lunch" class="tabcontent">
-    <h3>Lunch</h3>
-    <p>All the restaurants with Lunch.</p>
-  </div>
-  <div id="Dine" class="tabcontent">
-    <h3>Dine</h3>
-    <p>All the restaurants with Dine.</p>
-  </div>
-  <div id="Beverages" class="tabcontent">
-    <h3>Beverages</h3>
-    <p>Beverages.</p>
-  </div>
-  <div id="FastFood" class="tabcontent">
-    <h3>Fast Food</h3>
-    <p>All the Fast food restaurants.</p>
-  </div>
-</section>
-
+  </header>
+  <!-- Tab content -->
+  <section class="navbar">
+    <div id="Brunch" class="tabcontent">
+      <h3>Brunch</h3>
+      <p>All the brunch restaurants.</p>
+    </div>
+    <div id="Lunch" class="tabcontent">
+      <h3>Lunch</h3>
+      <p>All the restaurants with Lunch.</p>
+    </div>
+    <div id="Dine" class="tabcontent">
+      <h3>Dine</h3>
+      <p>All the restaurants with Dine.</p>
+    </div>
+    <div id="Beverages" class="tabcontent">
+      <h3>Beverages</h3>
+      <p>Beverages.</p>
+    </div>
+    <div id="FastFood" class="tabcontent">
+      <h3>Fast Food</h3>
+      <p>All the Fast food restaurants.</p>
+    </div>
+  </section>
+  
   <body>
     <div id="foundPlaces"></div>
     <div id="suggestedPlaces"></div>
