@@ -6,8 +6,6 @@ header {
     display: flex;
     padding: 4%;
     background-color:rgb(239, 146, 140);
-    border-bottom-left-radius: 3%;
-    border-bottom-right-radius: 3%;
     color: rgb(255, 254, 254);
   }
 
@@ -24,21 +22,21 @@ header {
     height: 50px;
     padding: 0 20px;
     margin-left: 10%;
-    margin-top: -25px;
+    margin-top: -24px;
     box-sizing: border-box;
     font-size: 24px;
     border: 1px solid rgb(255, 254, 254);
     border-radius: 25px;
-    transition:all 0.5s ease-in-out;
-    background-color: rgb(102, 122, 236);
-  
+    transition:all 0.3s ease-in-out;
+    background-color: rgb(198, 207, 255);
+    opacity: .7;
   }
 
   #search-bar:hover {
     background-color:aliceblue;
-    opacity: .9;
     border-color: aliceblue;
     box-shadow: 0 36px 72px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    opacity: .99;
   }
   
   #search-bar input[type="text"] {
@@ -50,7 +48,7 @@ header {
     outline: none;
     border: none;
     background: transparent;
-    color: rgb(30, 0, 0);
+    color: rgb(0, 0, 0);
   }
   
   #search-bar input[type="submit"] {
@@ -60,6 +58,10 @@ header {
   
 
 #foundPlaces {
+  border-radius: 1%;
+}
+
+#suggestedPlaces {
   border-radius: 1%;
 }
 
@@ -83,14 +85,14 @@ tr:hover {
 
 /* Style the tab */
 .tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: rgb(247, 204, 201);;
+  color: aliceblue;
+  margin-left: 35%;
+  margin-top: -25px;
 }
 /* Style the buttons that are used to open the tab content */
 .tab button {
   background-color: inherit;
-  float: left;
+  float: right;
   border: none;
   outline: none;
   cursor: pointer;
@@ -99,12 +101,14 @@ tr:hover {
 }
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: rgb(255, 245, 245);
+  background-color: rgb(236, 139, 139);
+  border-radius: 27%;
 }
 /* Create an active/current tablink class */
 .tab button.active {
   background-color: rgb(189, 188, 241);
   color: aliceblue;
+  border-radius: 9%;
 }
 /* Style the tab content */
 .tabcontent {

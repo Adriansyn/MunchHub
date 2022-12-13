@@ -16,7 +16,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   
-  <header class="h-14 bg-gradient-to-r from-blue-500 to-white-500">
+  <header class="h-14 bg-gradient-to-r from-blue-500 to-red-500">
   <h1 class="title">Welcome to MunchMap!</h1>
   <form onsubmit="searchRestaurants(); return false;">
     <div id="search-bar">
@@ -24,9 +24,7 @@
       <input type="submit" value="FEED ME!"/>
     </div>
   </form>
-</header>
-
-<!-- Tab links -->
+  <!-- Tab links -->
 <div class="tab">
   <button class="tablinks" onclick="openFoodCategory(event, 'Brunch')">Brunch</button>
   <button class="tablinks" onclick="openFoodCategory(event, 'Lunch')">Lunch</button>
@@ -35,7 +33,6 @@
   <button class="tablinks" onclick="openFoodCategory(event, 'FastFood')">Fast Food</button>
 </div>
 <!-- Tab content -->
-<section class="navbar">
   <div id="Brunch" class="tabcontent">
     <h3>Brunch</h3>
     <p>All the brunch restaurants.</p>
@@ -56,7 +53,9 @@
     <h3>Fast Food</h3>
     <p>All the Fast food restaurants.</p>
   </div>
-</section>
+</header>
+
+
 
   <body>
     <div id="foundPlaces"></div>
