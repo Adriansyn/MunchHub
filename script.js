@@ -24,9 +24,7 @@ FKyQWTe-yrm1tRTRveurkA
 API Key
 70MBw7TuVsRr36nTsoQWnlMty01Szep2mc7KzI3kGi5S-Zm6iCJ-hukRvZs0prwGLrpdcENC1EwO3sZEnfJvwXAmeW7NSmMs9yFB7e5IMgiRqMQIP7Vz7alOF4WXY3Yx
 
-
 }*/
-
 
 
 function openFoodCategory(evt, categoryName) {

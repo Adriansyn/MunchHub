@@ -4,13 +4,16 @@
 
 /* Style the tab */
 .tab {
-  background-color: transparent;
-  float: right;
+ position: relative;
+ right:-15%;
+ text-align: justify;
+ 
 }
 
 /* Style the buttons that are used to open the tab content */
 .tab button {
-  background-color: inherit;
+  position: right;
+  background-color: transparent;
   float: right;
   border: none;
   outline: none;
@@ -116,40 +119,7 @@ tr:hover {
 }
 
 
-/* Style the tab
-.tab {
-  color: aliceblue;
-  margin-left: 35%;
-  margin-top: -25px;
-}
-/* Style the buttons that are used to open the tab content 
-.tab button {
-  background-color: inherit;
-  float: right;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-}
-/* Change background color of buttons on hover 
-.tab button:hover {
-  background-color: rgb(236, 139, 139);
-  border-radius: 27%;
-}
-/* Create an active/current tablink class 
-.tab button.active {
-  background-color: rgb(189, 188, 241);
-  color: aliceblue;
-  border-radius: 9%;
-}
-/* Style the tab content 
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
-} */
+
 
 /* 
  * Always set the map height explicitly to define the size of the div element
