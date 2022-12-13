@@ -65,13 +65,13 @@ var places = [];
 
 let map, infoWindow;
 
-// //save query and location to local storage
-// function afterLoadedData(query, suggestionsTable) {
-//   //  console.log(query.target.value);
-//   localStorage.setItem(query, suggestionsTable);
+//save query and location to local storage
+function afterLoadedData(query, suggestionsTable) {
+  console.log(query.target.value);
+  localStorage.setItem(query, suggestionsTable);
 //   console.log("first Function");
 //   suggestionLoadedData()
-// }
+}
 // //display suggested locations
 
 // function suggestionLoadedData() {
@@ -194,12 +194,12 @@ function searchRestaurants() {
         resultsTable += '<tr><td>' + results[i].name + '</td><td>' + results[i].formatted_address + '</td></tr>';
         // //suggestionsTable += '<tr><td>' + places[i].name + '</td><td>' + places[i].formatted_address + '</td></tr>';
 
-        // var storedData = {
-        //   name: results[i + 3].name,
-        //   address: results[i + 3].formatted_address,
+        var storedData = {
+          name: results[i + 3].name,
+          address: results[i + 3].formatted_address,
 
-        // }
-        // places.push(storedData);
+        }
+        places.push(storedData);
       }
       // Close the table and add it to the page
       resultsTable += '</tbody></table>';
