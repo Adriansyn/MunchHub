@@ -357,11 +357,12 @@ function getBusinessReviews(businessId) {
     .then(response => console.log(response))
     .catch(err => console.error(err));
 }
-
+}
 //getBusiness(nameofResult, latitude, longitude)
 
 
 
+window.initMap = initMap();
 
 
 
@@ -456,6 +457,5 @@ fetch('urlgoeshere', {
   .catch((error) => {
     console.error('Error in POST request:', error);
   });
-
-window.initMap = initMap;
 */
+
