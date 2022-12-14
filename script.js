@@ -1,47 +1,3 @@
-//API key for google: AIzaSyAevrhRvesvcgMUqZ_PhfF6LRuMkdFmOfY
-
-// Note: This example requires that you consent to location sharing when
-// prompted by your browser. If you see the error "The Geolocation service
-// failed.", it means you probably did not give permission for the browser to
-// locate you.
-
-/*function changeMarkerIcon(marker, iconUrl) {
-  // Create a new icon object
-  let icon = {
-    url: "./pnpIcon.png",
-    scaledSize: new google.maps.Size(32, 32), // scaled size
-    origin: new google.maps.Point(100,100), // origin
-    anchor: new google.maps.Point(100, 100) // anchor
-  };
-
-  // Set the marker's icon to the new icon
-  marker.setIcon(icon);
-
-//Yelp Fusionls
-Client ID
-FKyQWTe-yrm1tRTRveurkA
-
-API Key
-70MBw7TuVsRr36nTsoQWnlMty01Szep2mc7KzI3kGi5S-Zm6iCJ-hukRvZs0prwGLrpdcENC1EwO3sZEnfJvwXAmeW7NSmMs9yFB7e5IMgiRqMQIP7Vz7alOF4WXY3Yx
-
-
-}*/
-
-/*function changeMarkerIcon(marker, iconUrl) {
-  // Create a new icon object
-  let icon = {
-    url: "./pnpIcon.png",
-    scaledSize: new google.maps.Size(32, 32), // scaled size
-    origin: new google.maps.Point(100,100), // origin
-    anchor: new google.maps.Point(100, 100) // anchor
-  };
-
-  // Set the marker's icon to the new icon
-  marker.setIcon(icon);
-}*/
-
-
-
 function openFoodCategory(evt, categoryName) {
   // Declare all variables
   var i, tabcontent, tablinks;
@@ -62,24 +18,50 @@ function openFoodCategory(evt, categoryName) {
 }
 
 
+getBusinessReviews();
+function getBusinessReviews(nameofResult, latitude, longitude) {
+
+  // set the modal menu element
+const targetEl = document.getElementById('modalEl');
+
+  // options with default values
+const options = {
+  placement: 'bottom-right',
+  backdrop: 'dynamic',
+  backdropClasses: 'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40',
+  onHide: () => {
+      console.log('modal is hidden');
+  },
+  onShow: () => {
+      console.log('modal is shown');
+  },
+  onToggle: () => {
+      console.log('modal has been toggled');
+  }
+};
+
+/*
+* targetEl: required
+* options: optional
+*/
+const modal = new Modal(targetEl, options);
+
+// show the modal
+modal.show();
+
+
+// toggle the modal
+modal.toggle();
+
+// true or false
+modal.isHidden();
+
+}
 
 
 var places = []
 var suggestedPlaces = []
 
-
-/*function changeMarkerIcon(marker, iconUrl) {
-  // Create a new icon object
-  let icon = {
-    url: "./pnpIcon.png",
-    scaledSize: new google.maps.Size(32, 32), // scaled size
-    origin: new google.maps.Point(100,100), // origin
-    anchor: new google.maps.Point(100, 100) // anchor
-  };
-
-  // Set the marker's icon to the new icon
-  marker.setIcon(icon);
-}*/
 
 let map, infoWindow;
 
@@ -118,36 +100,12 @@ function suggestionLoadedData() {
      suggestionsTable += '<tr><td>' + newSpot.name + '</td><td>' + newSpot.address + '</td></tr>';
     // Add the element to the page
   }
+  
   suggestionsTable += '</tbody></table>';
   document.getElementById('suggestedPlaces').innerHTML = suggestionsTable;
-}
-// function afterLoadedData(query, suggestionsTable) {
-//   console.log(query.target.value);
-//   localStorage.setItem(query, suggestionsTable);
-// //   console.log("first Function");
-// //   suggestionLoadedData()
-
-
-// //display suggested locations
-
-// function suggestionLoadedData() {
-//   console.log("Second Function");
-//   for (var i =0; i< 3; i++) {
-//   if (places.length > 3){
-//     const randomIndex = Math.floor(Math.random() * places.length);
-//     // Add the random index value to the array
-//     const suggestedPlaces = JSON.parse(localStorage.getItem('suggestedPlaces', places[randomIndex]));
-//     // Get the object at the current index
-//     const newSpot = places[randomIndex];
   
-//     // Create an element to display the object on the page
-//     const elem = document.createElement('div');
-//     elem.innerText = JSON.stringify(newSpot);
-//     // Add the element to the page
-//     document.body.appendChild(elem);
-//   }
-//   }
-// }
+}
+
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
@@ -233,20 +191,9 @@ function searchRestaurants() {
       '</thead>'
       '<tbody>';
 
-
-      
-
       places = []
 
-      // var suggestionsTable =
-      // '<table>'
-      // '<thead>'
-      // '<tr>'
-      // '</tr>'
-      // '</thead>'
-      // '<tbody>';
-
-
+ 
       // Loop through the top 3 results and log each place's name
       for (var i = 0; i < 3; i++) {
         console.log(results[i].geometry.location);
@@ -254,10 +201,6 @@ function searchRestaurants() {
 
         getBusiness(results[i].name, results[i].geometry.location.lat(), results[i].geometry.location.lng());
         resultsTable += '<tr><td>' + results[i].name + '</td><td>' + results[i].formatted_address + '</td></tr>';
-
-     
-
-        // //suggestionsTable += '<tr><td>' + places[i].name + '</td><td>' + places[i].formatted_address + '</td></tr>';
 
 
         var storedData = {
@@ -271,29 +214,14 @@ function searchRestaurants() {
       // Close the table and add it to the page
       resultsTable += '</tbody></table>';
       document.getElementById('foundPlaces').innerHTML = resultsTable;
-      //adding search results to local storage
+      
+      
+      afterLoadedData("suggestedPlaces",JSON.stringify(suggestedPlaces));
 
-     //document.getElementById('foundPlaces').addEventListener('loadeddata',afterLoadedData);
-
-     //resultsTable += '</tbody></table>';
-    // document.getElementById('suggestedPlaces').innerHTML = resultsTable;
-     //adding search results to local storage
-    //document.getElementById('suggestedPlaces').addEventListener('loadeddata',afterLoadedData);
-     
-
-  afterLoadedData("suggestedPlaces",JSON.stringify(suggestedPlaces));
-  //  afterLoadedData(query, JSON.stringify(places));
-
-      //suggestionsTable += '</tbody></table>';
-      //document.getElementById('suggestedPlaces').innerHTML = suggestionsTable;
-      //adding search results to local storage
-      // document.getElementById('foundPlaces').addEventListener('loadeddata', afterLoadedData);
-
-      // afterLoadedData(query, JSON.stringify(places));
 
       var map = new google.maps.Map(document.getElementById('map'), {
         center: results[0].geometry.location,
-        zoom: 18
+        zoom: 21
       });
 
       
@@ -310,12 +238,7 @@ function searchRestaurants() {
   });
 }
 
-
-
-
 window.initMap = initMap;
-
-
 
 
 function getBusiness(nameofResult, latitude, longitude) {
@@ -453,3 +376,115 @@ fetch('urlgoeshere', {
 
 window.initMap = initMap;
 */
+
+/*function changeMarkerIcon(marker, iconUrl) {
+  // Create a new icon object
+  let icon = {
+    url: "./pnpIcon.png",
+    scaledSize: new google.maps.Size(32, 32), // scaled size
+    origin: new google.maps.Point(100,100), // origin
+    anchor: new google.maps.Point(100, 100) // anchor
+  };
+
+  // Set the marker's icon to the new icon
+  marker.setIcon(icon);
+}*/
+
+//  afterLoadedData(query, JSON.stringify(places));
+
+      //suggestionsTable += '</tbody></table>';
+      //document.getElementById('suggestedPlaces').innerHTML = suggestionsTable;
+      //adding search results to local storage
+      // document.getElementById('foundPlaces').addEventListener('loadeddata', afterLoadedData);
+
+      // afterLoadedData(query, JSON.stringify(places));
+
+
+       //adding search results to local storage
+
+     //document.getElementById('foundPlaces').addEventListener('loadeddata',afterLoadedData);
+
+     //resultsTable += '</tbody></table>';
+    // document.getElementById('suggestedPlaces').innerHTML = resultsTable;
+     //adding search results to local storage
+    //document.getElementById('suggestedPlaces').addEventListener('loadeddata',afterLoadedData);
+
+         // var suggestionsTable =
+      // '<table>'
+      // '<thead>'
+      // '<tr>'
+      // '</tr>'
+      // '</thead>'
+      // '<tbody>';
+
+// function afterLoadedData(query, suggestionsTable) {
+//   console.log(query.target.value);
+//   localStorage.setItem(query, suggestionsTable);
+// //   console.log("first Function");
+// //   suggestionLoadedData()
+
+
+// //display suggested locations
+
+// function suggestionLoadedData() {
+//   console.log("Second Function");
+//   for (var i =0; i< 3; i++) {
+//   if (places.length > 3){
+//     const randomIndex = Math.floor(Math.random() * places.length);
+//     // Add the random index value to the array
+//     const suggestedPlaces = JSON.parse(localStorage.getItem('suggestedPlaces', places[randomIndex]));
+//     // Get the object at the current index
+//     const newSpot = places[randomIndex];
+  
+//     // Create an element to display the object on the page
+//     const elem = document.createElement('div');
+//     elem.innerText = JSON.stringify(newSpot);
+//     // Add the element to the page
+//     document.body.appendChild(elem);
+//   }
+//   }
+// }
+     //API key for google: AIzaSyAevrhRvesvcgMUqZ_PhfF6LRuMkdFmOfY
+
+// Note: This example requires that you consent to location sharing when
+// prompted by your browser. If you see the error "The Geolocation service
+// failed.", it means you probably did not give permission for the browser to
+// locate you.
+
+/*function changeMarkerIcon(marker, iconUrl) {
+  // Create a new icon object
+  let icon = {
+    url: "./pnpIcon.png",
+    scaledSize: new google.maps.Size(32, 32), // scaled size
+    origin: new google.maps.Point(100,100), // origin
+    anchor: new google.maps.Point(100, 100) // anchor
+  };
+
+  // Set the marker's icon to the new icon
+  marker.setIcon(icon);
+
+//Yelp Fusionls
+Client ID
+FKyQWTe-yrm1tRTRveurkA
+
+API Key
+70MBw7TuVsRr36nTsoQWnlMty01Szep2mc7KzI3kGi5S-Zm6iCJ-hukRvZs0prwGLrpdcENC1EwO3sZEnfJvwXAmeW7NSmMs9yFB7e5IMgiRqMQIP7Vz7alOF4WXY3Yx
+
+
+}*/
+
+/*function changeMarkerIcon(marker, iconUrl) {
+  // Create a new icon object
+  let icon = {
+    url: "./pnpIcon.png",
+    scaledSize: new google.maps.Size(32, 32), // scaled size
+    origin: new google.maps.Point(100,100), // origin
+    anchor: new google.maps.Point(100, 100) // anchor
+  };
+
+  // Set the marker's icon to the new icon
+  marker.setIcon(icon);
+}*/
+
+
+        // //suggestionsTable += '<tr><td>' + places[i].name + '</td><td>' + places[i].formatted_address + '</td></tr>';
