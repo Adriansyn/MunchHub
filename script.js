@@ -126,7 +126,7 @@ function suggestionLoadedData() {
   }
   suggestionsTable += '</tbody></table>';
   document.getElementById('suggestedPlaces').innerHTML = suggestionsTable;
-
+}
 function afterLoadedData(query, suggestionsTable) {
   console.log(query.target.value);
   localStorage.setItem(query, suggestionsTable);
